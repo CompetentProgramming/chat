@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>Competent programming - Chat App</h1>
+  <app-usernname (userNameEvent)="userNameUpdate($event)" *ngIf="!userName"></app-usernname>
+  <div class="chatbox">
+    <div class="chatbox__user-list">
+      <h2>User list</h2>
+      <div class="chatbox__user--active" *ngFor="let user of userList" >
+        <p>{{ user }}</p>
+      </div>
+    </div>
+    <div class="messages_list">
+      <div class="chatbox__messages" *ngFor="let msg of messageList" [ngClass]="{mine: msg.mine}">
+        <div class="user-message">
+          <div class="message-box">
+            <p class="name">{{ msg.userName }}</p>
+            <br/>
+            <p class="message">{{ msg.message }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="send-message">
+    <input type="text" [(ngModel)]="message">
+    <button (click)="sendMessage()">Send</button>
+  </div>
+</div>
